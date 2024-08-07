@@ -339,6 +339,22 @@ class Staff(commands.Cog, name="👮‍♂️ Staff"):
     ###
 
     @commands.hybrid_command(
+        name="announce",
+        description="Send a message to a channel.",
+        usage="announce <channel> <message>"
+    )
+    @commands.check(Checks.is_not_blacklisted)
+    @Checks.has_perm(administrator=True)
+    @app_commands.allowed_installs(guilds=True, users=False)
+    @app_commands.allowed_contexts(guilds=True, dms=False, private_channels=False)
+    async def announce(self, context: Context, channel: discord.TextChannel, *, message: str):
+        if channel:
+            await channel.send(message)
+            await context.send(f'Announcement sent to {channel.mention}!', ephemeral=True)
+        else:
+            await context.send(f'fail', ephemeral=True)
+
+    @commands.hybrid_command(
         name="kick",
         description="Kick a user out of the server.",
         usage="kick <user> [reason]",

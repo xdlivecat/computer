@@ -896,21 +896,6 @@ class Owner(commands.Cog, name="owner"):
                         await channel.send(f"{author.mention} leveled up to level {data['level']}!")
                 else:
                     await channel.send(f"{author.mention} leveled up to level {data['level']}!")
-
-    @commands.hybrid_command(
-            name="announce",
-            description="Send a message to a channel.",
-            usage="announce <channel> <message>"
-    )
-    @app_commands.allowed_installs(guilds=True, users=False)
-    @app_commands.allowed_contexts(guilds=True, dms=False, private_channels=False)
-    @commands.is_owner()
-    async def announce(self, context: Context, channel: discord.TextChannel, *, message: str):
-        if channel:
-            await channel.send(message)
-            await context.send(f'Announcement sent to {channel.mention}!', ephemeral=True)
-        else:
-            await context.send(f'fail', ephemeral=True)
     
         
 
