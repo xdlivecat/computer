@@ -18,6 +18,9 @@ from discord.ext.commands import Context
 import contextlib
 import io
 
+intents = discord.Intents.default()
+bot = commands.Bot(command_prefix='>', intents=intents)
+
 from utils import CONSTANTS, DBClient, Checks, ErrorLogger, CachedDB
 
 client = DBClient.client
@@ -893,6 +896,23 @@ class Owner(commands.Cog, name="owner"):
                         await channel.send(f"{author.mention} leveled up to level {data['level']}!")
                 else:
                     await channel.send(f"{author.mention} leveled up to level {data['level']}!")
+
+    @commands.command(
+            name="announce",
+            description="Send a message to a channel.",
+            usage="announce <channel> <message>"
+    )
+    @commands.is_owner()
+    async def announce(self, context: Context, channel: discord.TextChannel, *, message: str):
+        if channel:
+            await channel.send(message)
+            await context.channel.send(f'Announcement sent to {channel.mention}!')
+        else:
+            await context.channel.send(f'fail')
+        if channel is None:
+            await context.channel.send(f'none')
+    
+        
 
 async def setup(bot) -> None:
     await bot.add_cog(Owner(bot))
