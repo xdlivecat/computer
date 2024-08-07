@@ -211,6 +211,15 @@ class Owner(commands.Cog, name="owner"):
         await context.channel.send(message)
 
     @commands.hybrid_command(
+            name="3",
+            description=":3",
+            usage="3"
+    )
+    @commands.is_owner()
+    async def say(self, context: Context) -> None:
+        await context.channel.send(":3")
+
+    @commands.hybrid_command(
         name="embed",
         description="say smth in embed",
     )
