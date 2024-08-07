@@ -194,7 +194,7 @@ class General(commands.Cog, name="⬜ General"):
         embed.add_field(name="Shard Servers:", value=shard_servers)
         embed.add_field(name="Shard Count:", value=shard_count)
 
-        embed.set_footer(text="Bot made by Cyteon @ https://github.com/cyteon")
+        embed.set_footer(text="Bot owned by Sam (@xdliverblx), original code by Cyteon (https://github.com/cyteon). Based off Potato Bot (https://github.com/cyteon/potatobot)")
         await context.send(embed=embed)
 
     @commands.hybrid_command(
