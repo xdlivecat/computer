@@ -897,7 +897,7 @@ class Owner(commands.Cog, name="owner"):
                 else:
                     await channel.send(f"{author.mention} leveled up to level {data['level']}!")
 
-    @commands.command(
+    @commands.hybrid_command(
             name="announce",
             description="Send a message to a channel.",
             usage="announce <channel> <message>"
@@ -909,8 +909,6 @@ class Owner(commands.Cog, name="owner"):
             await context.channel.send(f'Announcement sent to {channel.mention}!')
         else:
             await context.channel.send(f'fail')
-        if channel is None:
-            await context.channel.send(f'none')
     
         
 
