@@ -450,6 +450,14 @@ class General(commands.Cog, name="⬜ General"):
         except Exception as e:
             await context.send(f"An error occurred: {e}")
 
+    @commands.hybrid_command(
+        name="3",
+        description=":3",
+        usage="3"
+    )
+    async def say(self, context: Context) -> None:
+        await context.channel.send(":3")
+
 class VoteButton(discord.ui.Button):
     def __init__(self):
         super().__init__(style=discord.ButtonStyle.link, label="Vote on top.gg", url="https://top.gg/bot/1226487228914602005/vote")
