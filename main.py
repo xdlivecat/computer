@@ -175,7 +175,7 @@ async def get_stats():
 def run_fastapi():
     uvicorn.run(
         app, host="0.0.0.0",
-        port=4434,
+        port=443,
         ssl_keyfile=config["ssl_keyfile"],
         ssl_certfile=config["ssl_certfile"],
         ssl_version=ssl.PROTOCOL_TLS
