@@ -902,13 +902,15 @@ class Owner(commands.Cog, name="owner"):
             description="Send a message to a channel.",
             usage="announce <channel> <message>"
     )
+    @app_commands.allowed_installs(guilds=True, users=False)
+    @app_commands.allowed_contexts(guilds=True, dms=False, private_channels=False)
     @commands.is_owner()
     async def announce(self, context: Context, channel: discord.TextChannel, *, message: str):
         if channel:
             await channel.send(message)
-            await context.channel.send(f'Announcement sent to {channel.mention}!')
+            await context.send(f'Announcement sent to {channel.mention}!', ephemeral=True)
         else:
-            await context.channel.send(f'fail')
+            await context.send(f'fail', ephemeral=True)
     
         
 
