@@ -477,8 +477,13 @@ class General(commands.Cog, name="⬜ General"):
         description=":3",
         usage="3"
     )
+    @commands.check(Checks.is_not_blacklisted)
+    @app_commands.allowed_installs(guilds=True, users=False)
+    @app_commands.allowed_contexts(guilds=True, dms=False, private_channels=False)
+    @Checks.has_perm(manage_guild=True)
     async def say(self, context: Context) -> None:
         await context.channel.send(":3")
+        await context.send(":3", ephemeral=True)
 
 class VoteButton(discord.ui.Button):
     def __init__(self):
