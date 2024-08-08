@@ -132,12 +132,12 @@ def prompt_ai(
         "timezone": time.tzname,
         "ai_models": models,
         "ai_image_model": "Kandinsky 3.0",
-        "owner/dev": "Cyteon",
+        "owner/dev": "Sam",
         "instance owner/dev ID": os.getenv("OWNER_ID"),
-        "support_server": "https://discord.gg/df8eCZDvxB",
-        "website": "https://potato.cyteon.tech",
-        "bot_invite": "https://discord.com/oauth2/authorize?client_id=1226487228914602005",
-        "source_code": "https://github.com/cyteon/potatobot",
+        "support_server": "https://discord.gg/JbpHVqDzby",
+        "website": "https://xdliverblx.live",
+        "bot_invite": "https://discord.com/oauth2/authorize?client_id=1270522850385592424",
+        "source_code": "https://github.com/xdlivecat/computer",
         "special_emojis": "<:joos:1254878760218529873>",
         "notes": {
             1: "Sending just an emoji with no text makes it big, discord has markdown",
@@ -147,7 +147,7 @@ def prompt_ai(
             2: "don't send the support server invite unless prompted to send it, dont send the website unless asked, dont send any link unless asked",
         },
         "self-data": {
-        	"name": "PotatoBot"
+        	"name": "computer"
     	}
     }
 
