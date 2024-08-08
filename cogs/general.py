@@ -485,6 +485,22 @@ class General(commands.Cog, name="⬜ General"):
         await context.channel.send(":3")
         await context.send(":3", ephemeral=True)
 
+    @commands.hybrid_command(
+        name="afk",
+        description="Go AFK for a specified amount of time.",
+        usage="afk <time> <reason>"
+    )
+    @commands.check(Checks.is_not_blacklisted)
+    @app_commands.allowed_installs(guilds=True, users=False)
+    @app_commands.allowed_contexts(guilds=True, dms=False, private_channels=False)
+    async def afk(self, ctx: commands.Context, time: int, *, reason: str = "No reason provided."):
+        try:
+            await ctx.send(f"{ctx.author.mention} is now AFK for {time} minutes. Reason: {reason}")
+            await asyncio.sleep(time * 60)
+            await ctx.send(f"Welcome back {ctx.author.mention}! You were AFK for {time} minutes.")
+        except Exception as e:
+            await ctx.send(f"An error occurred: {e}", ephemeral=True)
+
 class VoteButton(discord.ui.Button):
     def __init__(self):
         super().__init__(style=discord.ButtonStyle.link, label="Vote on top.gg", url="https://top.gg/bot/1226487228914602005/vote")
