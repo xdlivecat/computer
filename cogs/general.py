@@ -434,23 +434,6 @@ class General(commands.Cog, name="⬜ General"):
         await context.send(embed=embed)
 
     @commands.hybrid_command(
-        name="vote",
-        description="Vote for the bot on top.gg",
-        usage="vote"
-    )
-    @app_commands.allowed_installs(guilds=True, users=True)
-    @app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
-    async def vote(self, context: Context):
-        embed = discord.Embed(
-            title="Vote on top.gg",
-            description="Help out the bot by voting now!",
-            url="https://top.gg/bot/1226487228914602005/vote",
-            color=0xBEBEFE
-        )
-
-        await context.send(embed=embed, view=VoteView())
-
-    @commands.hybrid_command(
         name="calc",
         description="Calculate a math expression.",
         usage="calc <expression>",
@@ -501,18 +484,6 @@ class General(commands.Cog, name="⬜ General"):
         except Exception as e:
             await ctx.send(f"An error occurred: {e}", ephemeral=True)
 
-class VoteButton(discord.ui.Button):
-    def __init__(self):
-        super().__init__(style=discord.ButtonStyle.link, label="Vote on top.gg", url="https://top.gg/bot/1226487228914602005/vote")
-
-    async def callback(self, interaction: discord.Interaction):
-        await interaction.response.send_message("Thank you for voting!", ephemeral=True)
-
-class VoteView(discord.ui.View):
-    def __init__(self):
-        super().__init__(timeout=None)
-        self.add_item(VoteButton())
-
 class CogSelect(discord.ui.Select):
     def __init__(self, cogs, author):
         options = [
@@ -555,4 +526,3 @@ class CogSelectView(discord.ui.View):
 
 async def setup(bot) -> None:
     await bot.add_cog(General(bot))
-    bot.add_view(VoteView())
