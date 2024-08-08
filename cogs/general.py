@@ -242,6 +242,28 @@ class General(commands.Cog, name="⬜ General"):
         await context.send("Bug Reported")
 
     @commands.hybrid_command(
+            name="suggest",
+            description="Suggest a feature for the bot.",
+            usage="suggest <suggestion>"
+    )
+    @commands.check(Checks.is_not_blacklisted)
+    @app_commands.allowed_installs(guilds=True, users=True)
+    @app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
+    @commands.cooldown(5, 3600, commands.BucketType.user)
+    async def suggest(self, context: Context, *, suggestion: str) -> None:
+        channel = self.bot.get_channel(1270451885068779603)
+        embed = discord.Embed(
+            title="Suggestion",
+            description=suggestion,
+            color=0x5dff00
+        )
+
+        embed.set_footer(text=f"By {context.author} ({context.author.id}) in {context.guild} ({context.guild.id})")
+
+        await channel.send(embed=embed)
+        await context.send("Suggested!", ephemeral=True)
+
+    @commands.hybrid_command(
         name="translate",
         description="Translate text to a specified language example: ;translate 'How are you' es",
         usage="translate <text> <language>"
