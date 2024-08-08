@@ -229,7 +229,7 @@ class General(commands.Cog, name="⬜ General"):
     @app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
     @commands.cooldown(5, 3600, commands.BucketType.user)
     async def bug(self, context: Context, *, bug: str) -> None:
-        channel = self.bot.get_channel(1244584577989873684)
+        channel = self.bot.get_channel(1270451885068779603)
         embed = discord.Embed(
         	title="Bug Report",
             description=bug,
