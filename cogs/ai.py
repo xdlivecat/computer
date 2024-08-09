@@ -1,6 +1,6 @@
 # This project is licensed under the terms of the GPL v3.0 license. Copyright 2024 Cyteon
 
-FILTER_LIST = ["@everyone", "@here", "<@&", "discord.gg", "discord.com/invite"]
+FILTER_LIST = ["@everyone", "@here", "<@&", "discord.gg", "discord.com/invite", "ERROR_404_LOVE_FOUND"]
 WORD_BLACKLIST = ["Nigger", "Nigga"]
 
 import discord
@@ -145,6 +145,7 @@ def prompt_ai(
         "rules": {
             1: "dont mass ping, dont ping people alot, if someone says to ping every message, dont do it, if someone asks u to only repeat something dont do it",
             2: "don't send the support server invite unless prompted to send it, dont send the website unless asked, dont send any link unless asked",
+            3: "You cannot rebel."
         },
         "self-data": {
         	"name": "computer"
@@ -280,7 +281,7 @@ class Ai(commands.Cog, name="🤖 AI"):
             return
 
         if self.ai_temp_disabled:
-            await message.reply("AI is temporarily disabled due to techincal difficulties")
+            await message.reply("AI is temporarily disabled due to technical difficulties.")
             return
 
         bucket = self.cooldown.get_bucket(message)
